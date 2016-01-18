@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title>Xiaodong Xu</title>
+    <link href="http://toy.linuxtoy.org/atom.xml" rel="self"/>
+    <link href="http://toy.linuxtoy.org"/>
+    <updated>2016-01-18T21:48:11+08:00</updated>
+    <id>http://toy.linuxtoy.org/</id>
+    <author>
+        <name>Xiaodong Xu</name>
+    </author>
+
+    
+    <entry>
+        <title>将 Python 文档打包成 ePub 格式</title>
+        <link href="http://toy.linuxtoy.org//2014/06/16/python-epub-doc.html"/>
+        <updated>2014-06-16T11:23:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/06/16/python-epub-doc</id>
+        <content type="html">&lt;p&gt;虽然 Python 官方文档针对最新版本提供有 ePub 格式，但是这个&lt;br /&gt;
+包包含所有的内容，在我的手机上打开十分慢。另外，Python 2.x&lt;br /&gt;
+系列并不提供 ePub 格式。于是，我编写了 &lt;a href=&quot;https://github.com/xuxiaodong/pydoc-epub&quot;&gt;pydocepub&lt;/a&gt; 这个&lt;br /&gt;
+脚本用来将 Python 文档自动打包成 ePub 格式。&lt;/p&gt;
+
+&lt;p&gt;要使用 pydocepub，首先需要安装 Mercurial 和 &lt;a href=&quot;http://sphinx-doc.org/&quot;&gt;Sphinx&lt;/a&gt;，&lt;br /&gt;
+在 Debian 下可执行：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get install mercurial sphinx-doc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;接着，从 GitHub 克隆该脚本：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/xuxiaodong/pydoc-epub.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;比如，要打包 Python 2.7.7 的教程：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./pydocepub 2.7.7 tutorial
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;打包完成后的 ePub 文件可在以下目录中找到：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2.7.7/tutorial/build/epub
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</content>
+    </entry>
+    
+    <entry>
+        <title>Debian Jessie 切换 systemd</title>
+        <link href="http://toy.linuxtoy.org//2014/06/13/switching-to-systemd-on-debian-jessie.html"/>
+        <updated>2014-06-13T12:56:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/06/13/switching-to-systemd-on-debian-jessie</id>
+        <content type="html">&lt;p&gt;目前，许多 Linux 发行版都相继切换到了 systemd。在 Debian Jessie&lt;br /&gt;
+中，要从 SysVinit 切换到 systemd，可执行如下命令：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get update
+apt-get install systemd systemd-sysv
+reboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在切换前，注意查看系统&lt;a href=&quot;https://wiki.debian.org/systemd&quot;&gt;是否满足需求&lt;/a&gt;。&lt;/p&gt;
+
+</content>
+    </entry>
+    
+    <entry>
+        <title>使用 Pure-FTPd 架设 FTP 服务</title>
+        <link href="http://toy.linuxtoy.org//2014/05/09/pure-ftpd.html"/>
+        <updated>2014-05-09T11:34:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/05/09/pure-ftpd</id>
+        <content type="html">&lt;p&gt;最近需要与同事交换一些数据文件，于是考虑架设一个 FTP &lt;br /&gt;
+服务。这里，我使用 Pure-FTPd 来加以实现。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;在 Debian 中，执行：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get install pure-ftpd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;允许匿名用户访问&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;编辑 &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/pure-ftpd/conf/NoAnonymous&lt;/code&gt; 将其中的 yes &lt;br /&gt;
+改为 no。&lt;/p&gt;
+
+&lt;p&gt;添加一个名为 ftp 的用户：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adduser ftp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;再重启服务：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;service pure-ftpd restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>sed 中通过 /n 指定匹配出现次数</title>
+        <link href="http://toy.linuxtoy.org//2014/04/17/sed-specifying-which-occurrence.html"/>
+        <updated>2014-04-17T14:36:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/04/17/sed-specifying-which-occurrence</id>
+        <content type="html">&lt;p&gt;在 sed 中，通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;/n&lt;/code&gt; (n 代表数字) 可以指定匹配出现的次数。&lt;/p&gt;
+
+&lt;p&gt;例 1：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sed &#39;s/[a-zA-Z]* //2&#39; &amp;lt;old &amp;gt;new
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这里的 &lt;code class=&quot;highlighter-rouge&quot;&gt;/2&lt;/code&gt; 将匹配到的第二个单词删除。&lt;/p&gt;
+
+&lt;p&gt;例 2：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sed &#39;s/./&amp;amp;:/80&#39; &amp;lt;file &amp;gt;new
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这里的 &lt;code class=&quot;highlighter-rouge&quot;&gt;/80&lt;/code&gt; 在第 80 个字符后面添加一个 &lt;code class=&quot;highlighter-rouge&quot;&gt;:&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;例 3：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sed &#39;s/[a-zA-Z]* /DELETED /2g&#39; &amp;lt;old &amp;gt;new
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;与 &lt;code class=&quot;highlighter-rouge&quot;&gt;/g&lt;/code&gt; 连用，将匹配到的第二个、第三个……替换成 DELETED。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/n&lt;/code&gt; 中的 n 可以取 1 ~ 512 中的数。&lt;/p&gt;
+
+&lt;p&gt;注意，&lt;code class=&quot;highlighter-rouge&quot;&gt;/n&lt;/code&gt; 与 &lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt; 的区别，后者指引用捕获匹配的内容，n 取 1 ~ 9。&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>利用 Synergy 共享鼠标和键盘</title>
+        <link href="http://toy.linuxtoy.org//2014/03/19/share-mouse-and-keyboard-with-synergy.html"/>
+        <updated>2014-03-19T14:46:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/03/19/share-mouse-and-keyboard-with-synergy</id>
+        <content type="html">&lt;p&gt;在办公室工作的时候，如果想要将台式机的鼠标和键盘共享&lt;br /&gt;
+给笔记本使用，通过 Synergy 是很方便的。&lt;/p&gt;
+
+&lt;p&gt;要达到上述目的，首先在台式机和笔记本上都安装 Synergy，&lt;br /&gt;
+注意保证两边的版本一致，以免出现兼容问题。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;台式机：服务端&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;因为我们是打算共享台式机的鼠标和键盘，所以这里将台式&lt;br /&gt;
+机作为 Synergy 的服务端。同时，在 &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/synergy.conf&lt;/code&gt;&lt;br /&gt;
+中添加下列内容：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;section: screens
+    codefun: 
+    codetoy: 
+end
+
+section: links
+    codefun:
+        left  = codetoy
+    codetoy:
+        right = codefun
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;其中，&lt;code class=&quot;highlighter-rouge&quot;&gt;codetoy&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;codefun&lt;/code&gt; 分别为台式机和笔记本的主机&lt;br /&gt;
+名。&lt;code class=&quot;highlighter-rouge&quot;&gt;screens&lt;/code&gt; 节定义要使用共享鼠标和键盘的两台机器，也&lt;br /&gt;
+可以同时定义多台。&lt;code class=&quot;highlighter-rouge&quot;&gt;links&lt;/code&gt; 节则定义两台机器的屏幕所处的&lt;br /&gt;
+位置，这里我们将台式机设置在左边，相应地笔记本则在台式机&lt;br /&gt;
+的右边。除了左右关系，也能定义上下关系。&lt;/p&gt;
+
+&lt;p&gt;配置好后，通过以下命令启动 Synergy 的服务端：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;synergys -f -n codetoy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;笔记本：客户端&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;客户端无需配置，直接使用如下命令连接服务端即可：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;synergyc -f -n codetoy 192.168.1.58
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;其中，&lt;code class=&quot;highlighter-rouge&quot;&gt;192.168.1.58&lt;/code&gt; 为 Synergy 服务端所在机器的 IP。&lt;/p&gt;
+
+&lt;p&gt;现在，当将鼠标指针从台式机的屏幕右边移出时，你会发现它&lt;br /&gt;
+已经进到笔记本的屏幕了。如果要返回台式机屏幕，则从笔记&lt;br /&gt;
+本屏幕的左边移出即可。&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Asus EeePC X101CH 双显屏设置</title>
+        <link href="http://toy.linuxtoy.org//2014/03/19/eeepc-dual-monitor-setup.html"/>
+        <updated>2014-03-19T11:06:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/03/19/eeepc-dual-monitor-setup</id>
+        <content type="html">&lt;p&gt;最近用 &lt;code class=&quot;highlighter-rouge&quot;&gt;xrandr&lt;/code&gt; 为这台 Asus EeePC X101CH 设置双显示屏时，遇到&lt;br /&gt;
+了下列错误:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xrandr: Failed to get size of gamma for output default
+Screen 0: minimum 1024 x 600, current 1024 x 600, maximum 1024 x 600
+default connected 1024x600+0+0 0mm x 0mm
+1024x600        0.0* 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;从 xrandr 的输出信息并不能看到 VGA、DVI 等其他输出接口。实事&lt;br /&gt;
+上，这些接口是存在的。经过查证，在安装 xf86-video-modesetting 包，&lt;br /&gt;
+并创建 &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/share/X11/xorg.conf.d/00-modesetting.conf&lt;/code&gt; 文件后，&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;xrandr&lt;/code&gt; 执行正常。&lt;/p&gt;
+
+&lt;p&gt;00-modesetting.conf 的内容如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Section &quot;Device&quot;
+    Identifier &quot;gma500_gfx&quot;
+    Driver     &quot;modesetting&quot;
+    Option     &quot;SWCursor&quot;       &quot;ON&quot; 
+EndSection
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;连上外接显示器，再执行：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;% xrandr --output VGA-0 --auto
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;屏幕输出正常显示。&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>find 命令排除目录</title>
+        <link href="http://toy.linuxtoy.org//2014/03/13/exclude-directory-in-find.html"/>
+        <updated>2014-03-13T15:57:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/03/13/exclude-directory-in-find</id>
+        <content type="html">&lt;p&gt;在编写 &lt;a href=&quot;https://github.com/xuxiaodong/bin/blob/master/mkme&quot;&gt;mkme&lt;/a&gt; 这个脚本的时候，我需要使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;find&lt;/code&gt; 命令来&lt;br /&gt;
+找出当前目录下的可执行文件，但是要排除 &lt;code class=&quot;highlighter-rouge&quot;&gt;.git&lt;/code&gt; 目录。查阅&lt;br /&gt;
+find 的 Manpage 后，发现可以这样子来搞定：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;find . -type f -executable ! -path &quot;./.git/*&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;其选项说明如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.&lt;/code&gt;：在当前目录下查找&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-type f&lt;/code&gt;：仅查找一般文件&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-executable&lt;/code&gt;：文件具有可执行权限&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;! -path &quot;./.git/*&quot;&lt;/code&gt;：这里是关键，&lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt; 的作用是排除其后&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;-path&lt;/code&gt; 所跟的目录&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+    </entry>
+    
+    <entry>
+        <title>快速查询语言 API</title>
+        <link href="http://toy.linuxtoy.org//2014/03/11/search-devdocs.html"/>
+        <updated>2014-03-11T16:28:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/03/11/search-devdocs</id>
+        <content type="html">&lt;p&gt;由 Thibaut Courouble 所创建的 &lt;a href=&quot;http://devdocs.io/&quot;&gt;DevDocs&lt;/a&gt; 的确是相当不错的工具，&lt;br /&gt;
+它将 CSS、HTML、JavaScript、PHP、Python、Ruby 等各种 API 文档整&lt;br /&gt;
+合在一起，并提供统一的搜索接口，极大的方便了编写代码的程序员朋友。&lt;/p&gt;
+
+&lt;p&gt;为了便于从命令行下查询，我编写了 &lt;code class=&quot;highlighter-rouge&quot;&gt;search-api&lt;/code&gt; 这个脚本。该脚本&lt;br /&gt;
+支持如下两种方式来进行查询：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;search-api &amp;lt;keyword&amp;gt;&lt;/code&gt;：这将查询以 keyword 作为关键字的内容。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;search-api &amp;lt;language&amp;gt; &amp;lt;keyword&amp;gt;&lt;/code&gt;：针对特定语言进行查询。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;例如，在 Vim 中我执行 &lt;code class=&quot;highlighter-rouge&quot;&gt;:!search-api js replace&lt;/code&gt; 将查询 JavaScript&lt;br /&gt;
+中 replace 的用法。脚本会调用 Firefox 打开一个窗口来展示查询的结果。&lt;/p&gt;
+
+</content>
+    </entry>
+    
+    <entry>
+        <title>hr in Perl</title>
+        <link href="http://toy.linuxtoy.org//2014/03/07/hr-in-perl.html"/>
+        <updated>2014-03-07T16:57:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/03/07/hr-in-perl</id>
+        <content type="html">&lt;p&gt;熟悉 HTML 的朋友想必都知道 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;hr /&amp;gt;&lt;/code&gt; 这个标签的用途是绘制&lt;br /&gt;
+一条水平线。hr 则是适用于终端的 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;hr /&amp;gt;&lt;/code&gt;。它将根据用户&lt;br /&gt;
+输入的字符在终端中绘制水平线，默认是 &lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt; 符号，其长度跟&lt;br /&gt;
+终端窗口的大小一样。例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ hr #
+##################################
+
+$ hr &#39;*&#39;
+**********************************
+
+$ hr - &#39;#&#39; -
+----------------------------------
+##################################
+----------------------------------
+
+$ hr &#39;-#-&#39; &#39;-&#39; &#39;-#-&#39;
+-#--#--#--#--#--#--#--#--#--#--#--
+----------------------------------
+-#--#--#--#--#--#--#--#--#--#--#--
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;hr 的原作者 &lt;a href=&quot;https://github.com/LuRsT/hr&quot;&gt;LuRsT&lt;/a&gt; 是使用 Bash 编写的，只是为了好玩，我用&lt;br /&gt;
+Perl 重新实现了一个版本。hr 的其他语言实现还包括 JavaScript、&lt;br /&gt;
+Python、Ruby、Haskell 等等。&lt;/p&gt;
+
+</content>
+    </entry>
+    
+    <entry>
+        <title>增大 LVM root 分区空间</title>
+        <link href="http://toy.linuxtoy.org//2014/03/05/resize-lvm-root-partition-slash.html"/>
+        <updated>2014-03-05T14:20:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/03/05/resize-lvm-root-partition-slash</id>
+        <content type="html">&lt;p&gt;最近发现我的 Debian root 分区已经占满了，于是打算给它&lt;br /&gt;
+增加一些新的空间。&lt;/p&gt;
+
+&lt;p&gt;因为我使用了 LVM，所以即便是 root 分区，也可以直接为&lt;br /&gt;
+其扩容，不用 umount，也不用 reboot，真的是十分方便。&lt;/p&gt;
+
+&lt;p&gt;首先，利用 &lt;code class=&quot;highlighter-rouge&quot;&gt;lvdisplay&lt;/code&gt; 可以看到目前逻辑卷的一些信息：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gd&quot;&gt;--- Logical volume ---
+&lt;/span&gt;LV Path                /dev/toy/root
+LV Name                root
+VG Name                toy
+LV UUID                wCBCHD-Ddrg-2tev-3xHV-ZXHI-tYB3-R2fhuu
+LV Write Access        read/write
+LV Creation host, time toy, 2013-06-13 11:25:53 +0800
+LV Status              available
+# open                 1
+LV Size                9.31 GiB
+Current LE             2384
+Segments               1
+Allocation             inherit
+Read ahead sectors     auto
+&lt;span class=&quot;gd&quot;&gt;- currently set to     256
+&lt;/span&gt;Block device           254:0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;接着，使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;lvextend -L+7G /dev/toy/root -v&lt;/code&gt; 来给 root 分区增加&lt;br /&gt;
+7G。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Finding volume group toy
+Archiving volume group &quot;toy&quot; metadata (seqno 5).
+Extending logical volume root to 16.31 GiB
+Found volume group &quot;toy&quot;
+Found volume group &quot;toy&quot;
+Loading toy-root table (254:0)
+Suspending toy-root (254:0) with device flush
+Found volume group &quot;toy&quot;
+Resuming toy-root (254:0)
+Creating volume group backup &quot;/etc/lvm/backup/toy&quot; (seqno 6).
+Logical volume root successfully resized
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;最后，通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;resize2fs /dev/toy/root&lt;/code&gt; 将文件系统也进行扩容。&lt;br /&gt;
+我的 root 分区的文件系统为 ext4，需要注意的是，目前的 Linux&lt;br /&gt;
+内核可能对某些文件系统不支持这种 on-line 的调整方式。所以在动手&lt;br /&gt;
+前先做好功课就显得很重要了。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;resize2fs 1.42.9 (28-Dec-2013)
+Filesystem at /dev/toy/root is mounted on /; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 2
+The filesystem on /dev/toy/root is now 4276224 blocks long.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;再用 &lt;code class=&quot;highlighter-rouge&quot;&gt;df -Th&lt;/code&gt; 看一下，发现 root 分区的空间已经增大了。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Filesystem           Type      Size  Used Avail Use% Mounted on
+/dev/mapper/toy-root ext4       16G  7.7G  7.6G  51% /
+udev                 devtmpfs   10M     0   10M   0% /dev
+tmpfs                tmpfs     402M  308K  402M   1% /run
+tmpfs                tmpfs     5.0M     0  5.0M   0% /run/lock
+tmpfs                tmpfs     804M   68K  804M   1% /run/shm
+/dev/sda1            ext2      228M   44M  172M  21% /boot
+/dev/mapper/toy-home ext4      442G  172G  248G  42% /home
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>通过 Ratchet 为 Linuxtoy 构建移动界面</title>
+        <link href="http://toy.linuxtoy.org//2014/02/27/build-mobile-ui-with-ratchet.html"/>
+        <updated>2014-02-27T21:07:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/02/27/build-mobile-ui-with-ratchet</id>
+        <content type="html">&lt;p&gt;今天在 HTML5 Weekly 中看到了对 Ratchet 的介绍，它是一个移动&lt;br /&gt;
+应用构建框架，主要支持使用 HTML、CSS、JavaScript 等技术。鉴&lt;br /&gt;
+于 Linuxtoy.org 一直缺少一个面向移动终端的界面，于是马上决定&lt;br /&gt;
+试试 Ratchet。&lt;/p&gt;
+
+&lt;p&gt;初步的实现想法是：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;使用 jQuery 和 FeedEk 解析 Feed，以便获得内容&lt;/li&gt;
+  &lt;li&gt;接着，使用 Ratchet 来渲染所得到的内容&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;效果如下，可通过 &lt;a href=&quot;http://m.linuxtoy.org&quot;&gt;http://m.linuxtoy.org&lt;/a&gt; 访问：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mtoy-index.png&quot; alt=&quot;mtoy&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;首页显示最新的 10 篇文章。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mtoy-single.png&quot; alt=&quot;mtoy&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;文章的具体内容。&lt;/p&gt;
+
+&lt;p&gt;通过试用，感觉 Ratchet 还是挺好上手的。有时间不妨再深入&lt;br /&gt;
+研究下。&lt;/p&gt;
+
+&lt;p&gt;实现的源代码可从 &lt;a href=&quot;http://git.linuxtoy.org/mtoy/&quot;&gt;http://git.linuxtoy.org/mtoy/&lt;/a&gt; 得到。&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>使用 Perl 实现 tldr</title>
+        <link href="http://toy.linuxtoy.org//2014/02/21/my-tldr.html"/>
+        <updated>2014-02-21T12:48:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/02/21/my-tldr</id>
+        <content type="html">&lt;p&gt;Romain Prieto 的 &lt;a href=&quot;https://github.com/rprieto/tldr&quot;&gt;tldr&lt;/a&gt; 想法是好，但其依赖的一堆 Node&lt;br /&gt;
+可能会让某些朋友不高兴。当是练手，我用 Perl 实现了自己的&lt;br /&gt;
+&lt;a href=&quot;https://github.com/xuxiaodong/bin/blob/master/tldr&quot;&gt;tldr&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;使用方法如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;% mkdir ~/tldr
+% cd !$
+% git clone https://github.com/rprieto/tldr.git
+% wget https://github.com/xuxiaodong/bin/raw/master/tldr -O tldr.pl
+% chmod +x tldr.pl
+% ./tldr.pl tar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;输出为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; Archiving utility
+&amp;gt; Optional compression with gzip / bzip
+
+- create an archive from files
+
+`tar cf \{\{target.tar}} \{\{file1 file2 file3}}`
+
+- create a gzipped archive
+
+`tar cfz \{\{target.tar.gz}} \{\{file1 file2 file3}}`
+
+- extract an archive in a target folder
+
+`tar xf \{\{source.tar}} -C \{\{folder}}`
+
+- extract a gzipped archive in the current directory
+
+`tar xzf \{\{source.tar.gz}}`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</content>
+    </entry>
+    
+    <entry>
+        <title>修复 XFS 文件系统错误</title>
+        <link href="http://toy.linuxtoy.org//2014/02/16/repair-xfs.html"/>
+        <updated>2014-02-16T00:10:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/02/16/repair-xfs</id>
+        <content type="html">&lt;p&gt;在强制关机后，我的 Funtoo 重启时遇到了下面的错误:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mount: mount /dev/mapper/vg-home on /home failed: Structure
+needs cleaning
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;从出错提示可以看出，将 &lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/mapper/vg-home&lt;/code&gt; 挂载到 &lt;code class=&quot;highlighter-rouge&quot;&gt;/home&lt;/code&gt; 时&lt;br /&gt;
+失败了。&lt;/p&gt;
+
+&lt;p&gt;通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;TTY2&lt;/code&gt; 登录系统后，执行 &lt;code class=&quot;highlighter-rouge&quot;&gt;xfs_repair&lt;/code&gt; 命令对 XFS 文件系统&lt;br /&gt;
+先进行检查。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xfs_repair -n -v /dev/mapper/vg-home
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;一番扫描下来果然发现了错误。接着，修复这些错误：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xfs_repair -L -v /dev/mapper/vg-home
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;完成后，再次 mount 正常。&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>Debian 下阻止包升级</title>
+        <link href="http://toy.linuxtoy.org//2014/01/23/debian-hold-package.html"/>
+        <updated>2014-01-23T09:56:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2014/01/23/debian-hold-package</id>
+        <content type="html">&lt;p&gt;在执行系统更新时，有时候我想阻止某些个别的包升级，&lt;br /&gt;
+Debian 下可以使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-mark&lt;/code&gt; 命令。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;阻止包&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-mark hold &amp;lt;pkg&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;比如，阻止升级 Perl，执行 &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-mark hold perl&lt;/code&gt; 即可。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;取消阻止&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;如果不想阻止了，那么可以通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-mark unhold&lt;/code&gt; 取消：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-mark unhold &amp;lt;pkg&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;显示已阻止的包&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;要查看已经被阻止的包，则可以执行：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-mark showhold
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>在 Godaddy 中添加泛域名解析</title>
+        <link href="http://toy.linuxtoy.org//2013/12/31/add-wildcard-subdomain-in-godaddy.html"/>
+        <updated>2013-12-31T10:53:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2013/12/31/add-wildcard-subdomain-in-godaddy</id>
+        <content type="html">&lt;p&gt;最近因为玩各种有趣的东东，所以为 &lt;linuxtoy.org&gt; 添加了不少
+子域。为了避免频繁的添加过程，于是想到用泛域名解析来解决。&lt;/linuxtoy.org&gt;&lt;/p&gt;
+
+&lt;p&gt;在 Godaddy 中添加泛域名解析十分简单，只要追加一条 &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; 记录&lt;br /&gt;
+，并分别将 Host 设为 &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;、Points To 设为目标 IP 地址即可。&lt;/p&gt;
+
+&lt;p&gt;Godaddy 的 DNS 设置生效时间非常快，几乎是设置完成后便可以&lt;br /&gt;
+使用。&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>自底向上理解 Git</title>
+        <link href="http://toy.linuxtoy.org//2013/12/30/git-from-bottom-up.html"/>
+        <updated>2013-12-30T16:03:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2013/12/30/git-from-bottom-up</id>
+        <content type="html">&lt;p&gt;Git from bottom up 这篇文章写得相当不错，对于理解 Git 的原理&lt;br /&gt;
+非常具有帮助。文章从 Git 的基本构成要素 blob 讲起，之后逐渐&lt;br /&gt;
+说明了 blob、tree、commit、branch、tag 的内在联系，以及阐述了&lt;br /&gt;
+rebase、reset、stash、reflog 的用途。读罢给人一种豁然开朗的&lt;br /&gt;
+感觉。&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>修复 pycrypto AttributeError</title>
+        <link href="http://toy.linuxtoy.org//2013/12/20/fix-attributeerror.html"/>
+        <updated>2013-12-20T10:05:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2013/12/20/fix-attributeerror</id>
+        <content type="html">&lt;p&gt;在将 Ansible 升级到 1.4.2 时，其依赖模块 pycrpyto 也进行了&lt;br /&gt;
+更新，执行 &lt;code class=&quot;highlighter-rouge&quot;&gt;ansible&lt;/code&gt; 报如下错误：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Traceback (most recent call last):
+File &quot;/usr/bin/ansible&quot;, line 24, in &amp;lt;module&amp;gt;
+    from ansible.runner import Runner
+File &quot;/usr/lib/python2.6/site-packages/ansible/runner/__init__.py&quot;, line 53, in &amp;lt;module&amp;gt;
+    from Crypto.Random import atfork
+File &quot;/usr/lib64/python2.6/site-packages/Crypto/Random/__init__.py&quot;, line 29, in &amp;lt;module&amp;gt;
+    from Crypto.Random import _UserFriendlyRNG
+File &quot;/usr/lib64/python2.6/site-packages/Crypto/Random/_UserFriendlyRNG.py&quot;, line 38, in &amp;lt;module&amp;gt;
+    from Crypto.Random.Fortuna import FortunaAccumulator
+File &quot;/usr/lib64/python2.6/site-packages/Crypto/Random/Fortuna/FortunaAccumulator.py&quot;, line 39, in &amp;lt;module&amp;gt;
+    import FortunaGenerator
+File &quot;/usr/lib64/python2.6/site-packages/Crypto/Random/Fortuna/FortunaGenerator.py&quot;, line 34, in &amp;lt;module&amp;gt;
+    from Crypto.Util.number import ceil_shift, exact_log2, exact_div
+File &quot;/usr/lib64/python2.6/site-packages/Crypto/Util/number.py&quot;, line 56, in &amp;lt;module&amp;gt;
+    if _fastmath is not None and not _fastmath.HAVE_DECL_MPZ_POWM_SEC:
+AttributeError: &#39;module&#39; object has no attribute &#39;HAVE_DECL_MPZ_POWM_SEC&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;打开 &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib64/python2.6/site-packages/Crypto/Util/number.py&lt;/code&gt; 文件，可以&lt;br /&gt;
+看到 56 行上的注释说明，要求 libgmp 为 v5 以上版本。而系统现有版本为&lt;br /&gt;
+4.1.4，把 56 和 57 行暂时注释掉，Ansible 执行正常。&lt;/p&gt;
+
+&lt;p&gt;不过，此方法只是临时加以解决，更好的方式是去将 libgmp&lt;br /&gt;
+升级到符合要求的版本。&lt;/p&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>bootstrap-sortable: 给 Bootstrap Table 添加排序功能</title>
+        <link href="http://toy.linuxtoy.org//2013/12/18/bootstrap-sortable.html"/>
+        <updated>2013-12-18T17:17:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2013/12/18/bootstrap-sortable</id>
+        <content type="html">&lt;p&gt;bootstrap-sortable 这个 JS 库能够给 Bootstrap 的 Table 增添排序&lt;br /&gt;
+功能，用起来相当简单。&lt;/p&gt;
+
+&lt;p&gt;首先，在 HTML 页面中引用以下三个文件：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;link href=&quot;css/bootstrap-sortable.css&quot; rel=&quot;stylesheet&quot; media=&quot;screen&quot;&amp;gt;
+&amp;lt;script src=&quot;js/moment.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&quot;js/bootstrap-sortable.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;接着，在 Table 标签中追加 &lt;code class=&quot;highlighter-rouge&quot;&gt;sortable&lt;/code&gt; 类即可：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;table class=&quot;table table-striped table-hover sortable&quot;&amp;gt;
+...
+&amp;lt;/table&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>玩玩 Ansible API</title>
+        <link href="http://toy.linuxtoy.org//2013/12/13/playing-with-ansible-api.html"/>
+        <updated>2013-12-13T14:00:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2013/12/13/playing-with-ansible-api</id>
+        <content type="html">&lt;p&gt;如果了解一点 Python，我们还可以从 API 的角度来使用 Ansible。&lt;br /&gt;
+这是我喜欢使用 Ansible 的另一个原因。&lt;/p&gt;
+
+&lt;p&gt;虽然 Ansible 提供的 &lt;code class=&quot;highlighter-rouge&quot;&gt;--list-hosts&lt;/code&gt; 选项可以看到 inventory 中&lt;br /&gt;
+的主机，但却无法看到具体的组别。因此，我写了一段小程序来列出&lt;br /&gt;
+这些组名：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from ansible.inventory import Inventory
+
+def get_groups():
+    i = Inventory()
+    groups = i.list_groups()
+    return &#39;\n&#39;.join(groups)
+
+if __name__ == &#39;__main__&#39;:
+    print(get_groups())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果保存为 ansible-groups，执行&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./ansible-groups
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;就会输出类似下面的结果：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;all
+test
+ungrouped
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <title>pip 安装特定版本的 Python 包</title>
+        <link href="http://toy.linuxtoy.org//2013/12/11/installing-specific-package-versions-with-pip.html"/>
+        <updated>2013-12-11T13:38:00+08:00</updated>
+        <id>http://toy.linuxtoy.org//2013/12/11/installing-specific-package-versions-with-pip</id>
+        <content type="html">&lt;p&gt;要用 &lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt; 安装特定版本的 Python 包，只需通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt; 操作符&lt;br /&gt;
+指定，例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip install -v pycrypto==2.3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;将安装 pycrypto 2.3 版本。&lt;/p&gt;
+</content>
+    </entry>
+    
+
+</feed>
