@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>增大 LVM root 分区空间</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2>增大 LVM root 分区空间</h2>
+
+<p id="tip-info">March  5, 2014 @ 02:20 PM</p>
+<p>最近发现我的 Debian root 分区已经占满了，于是打算给它<br />
+增加一些新的空间。</p>
+
+<p>因为我使用了 LVM，所以即便是 root 分区，也可以直接为<br />
+其扩容，不用 umount，也不用 reboot，真的是十分方便。</p>
+
+<p>首先，利用 <code class="highlighter-rouge">lvdisplay</code> 可以看到目前逻辑卷的一些信息：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gd">--- Logical volume ---
+</span>LV Path                /dev/toy/root
+LV Name                root
+VG Name                toy
+LV UUID                wCBCHD-Ddrg-2tev-3xHV-ZXHI-tYB3-R2fhuu
+LV Write Access        read/write
+LV Creation host, time toy, 2013-06-13 11:25:53 +0800
+LV Status              available
+# open                 1
+LV Size                9.31 GiB
+Current LE             2384
+Segments               1
+Allocation             inherit
+Read ahead sectors     auto
+<span class="gd">- currently set to     256
+</span>Block device           254:0
+</code></pre>
+</div>
+
+<p>接着，使用 <code class="highlighter-rouge">lvextend -L+7G /dev/toy/root -v</code> 来给 root 分区增加<br />
+7G。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Finding volume group toy
+Archiving volume group "toy" metadata (seqno 5).
+Extending logical volume root to 16.31 GiB
+Found volume group "toy"
+Found volume group "toy"
+Loading toy-root table (254:0)
+Suspending toy-root (254:0) with device flush
+Found volume group "toy"
+Resuming toy-root (254:0)
+Creating volume group backup "/etc/lvm/backup/toy" (seqno 6).
+Logical volume root successfully resized
+</code></pre>
+</div>
+
+<p>最后，通过 <code class="highlighter-rouge">resize2fs /dev/toy/root</code> 将文件系统也进行扩容。<br />
+我的 root 分区的文件系统为 ext4，需要注意的是，目前的 Linux<br />
+内核可能对某些文件系统不支持这种 on-line 的调整方式。所以在动手<br />
+前先做好功课就显得很重要了。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>resize2fs 1.42.9 (28-Dec-2013)
+Filesystem at /dev/toy/root is mounted on /; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 2
+The filesystem on /dev/toy/root is now 4276224 blocks long.
+</code></pre>
+</div>
+
+<p>再用 <code class="highlighter-rouge">df -Th</code> 看一下，发现 root 分区的空间已经增大了。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Filesystem           Type      Size  Used Avail Use% Mounted on
+/dev/mapper/toy-root ext4       16G  7.7G  7.6G  51% /
+udev                 devtmpfs   10M     0   10M   0% /dev
+tmpfs                tmpfs     402M  308K  402M   1% /run
+tmpfs                tmpfs     5.0M     0  5.0M   0% /run/lock
+tmpfs                tmpfs     804M   68K  804M   1% /run/shm
+/dev/sda1            ext2      228M   44M  172M  21% /boot
+/dev/mapper/toy-home ext4      442G  172G  248G  42% /home
+</code></pre>
+</div>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

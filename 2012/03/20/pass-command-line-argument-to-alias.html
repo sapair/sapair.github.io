@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>给 alias 添加命令行参数</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2>给 alias 添加命令行参数</h2>
+
+<p id="tip-info">March 20, 2012 @ 11:10 PM</p>
+<p>昨天在定义 alias 时，有想到用命令行参数的需求。但通过查证文档的结果是，alias<br />
+根本就不支持传递命令行参数。不过，我们可以变通的解决这个问题，即定义函数。</p>
+
+<p>下例截取自我为方便使用 Octopress 撰写 Blog 而定义的 alias:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>alias pn='new() { bundle exec rake new_post\["$1"\] }; new'
+</code></pre>
+</div>
+
+<p>这里，我通过定义 new() 函数来将 $1 参数传递给别名 pn。现在只需执行:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pn 'post title'
+</code></pre>
+</div>
+
+<p>就可以新建一篇 post 了。</p>
+
+<p>另一个用于提交 source 的 alias:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>alias pc='commit() { git add .; git commit -m "$1"; git push origin source }; commit'
+</code></pre>
+</div>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

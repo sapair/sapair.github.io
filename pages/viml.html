@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>VimL Crash Course</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                <h1 id="viml-crash-course">VimL Crash Course</h1>
+
+<p>VimL 即 Vim script language，它内建于 Vim 中，是一种用来编写 Vim<br />
+脚本的程序语言。</p>
+
+<h2 id="section">数据类型</h2>
+
+<p>VimL 主要包括数值、字符串、列表、以及字典等四种数据类型。</p>
+
+<h3 id="section-1">数值</h3>
+
+<ol>
+  <li>十进制</li>
+  <li>十六进制，以“0x”或“0X”打头，如：0x7f 为十进制的 127</li>
+  <li>八进制，以“0”打头，如：036 为十进制的 30</li>
+</ol>
+
+<h3 id="section-2">字符串</h3>
+
+<ol>
+  <li>单引号引起</li>
+  <li>双引号引起</li>
+  <li>使用“.”连接</li>
+</ol>
+
+<h3 id="section-3">列表</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>let alist = ['a', 1, 'c']
+</code></pre>
+</div>
+
+<ol>
+  <li>add - 添加元素到列表</li>
+  <li>
+    <ul>
+      <li>
+        <ul>
+          <li>合并列表</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>extend - 扩展列表</li>
+</ol>
+
+<h3 id="section-4">字典</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>let uk2nl = {'one': 'een', 'two': 'twee', 'three': 'drie'}
+</code></pre>
+</div>
+
+<h2 id="section-5">变量、赋值及表达式</h2>
+
+<h3 id="section-6">变量</h3>
+
+<p>VimL 的变量名由字母、数字及下划线组成，且开头不能是数字。</p>
+
+<p>变量默认是全局的（但在函数中是局部的），可在变量名前增加前缀改变其作用域。</p>
+
+<ol>
+  <li>s:name - 局部变量（针对脚本文件）</li>
+  <li>b:name - 局部变量（针对缓冲）</li>
+  <li>w:name - 局部变量（针对窗口）</li>
+  <li>g:name - 全局变量（函数中可见）</li>
+  <li>v:name - Vim 预定义的变量</li>
+  <li>a:name - 函数参数</li>
+</ol>
+
+<h3 id="section-7">赋值</h3>
+
+<p>例：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>let i = 1
+</code></pre>
+</div>
+
+<h3 id="section-8">表达式</h3>
+
+<ol>
+  <li>$NAME - 环境变量</li>
+  <li>&amp;name - 选项</li>
+  <li>@r - 寄存器</li>
+  <li>算术 <code class="highlighter-rouge">+ - * / %</code></li>
+  <li>逻辑 <code class="highlighter-rouge">== != &gt; &gt;= &lt; &lt;=</code></li>
+  <li>匹配 <code class="highlighter-rouge">=~ !~</code></li>
+  <li>执行 execute normal eval</li>
+</ol>
+
+<h2 id="section-9">条件与循环</h2>
+
+<h3 id="section-10">条件</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if 条件
+  语句
+[elseif 条件
+  语句]
+[else
+  语句]
+endif
+</code></pre>
+</div>
+
+<h3 id="section-11">循环</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>while 条件
+  语句
+endwhile
+</code></pre>
+</div>
+
+<p>continue 与 break</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for 变量 in 列表
+  语句
+endfor
+</code></pre>
+</div>
+
+<h2 id="section-12">函数</h2>
+
+<h3 id="section-13">定义</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function 名称(参数, ...)
+  语句
+  [return]
+endfunction
+</code></pre>
+</div>
+
+<p>可使用 ! 覆盖已定义的函数。</p>
+
+<h3 id="section-14">调用</h3>
+
+<p>使用 call 或作为表达式调用。</p>
+
+<h2 id="section-15">异常</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>try
+  语句
+catch [/错误/]
+  语句
+endtry
+</code></pre>
+</div>
+
+<h2 id="section-16">参考</h2>
+
+<p><a href="http://vimdoc.sourceforge.net/htmldoc/usr_41.html">usr_41</a></p>
+
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

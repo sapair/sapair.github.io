@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>使用 Nmap 诊断网络端口</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2><a href="http://nmap.org/" title="External link">使用 Nmap 诊断网络端口</a></h2>
+
+<p id="tip-info">December  6, 2013 @ 03:42 PM</p>
+<p>在拿 Tinyproxy 架设 HTTP 代理服务后，发现并不能正常工作。Tinyproxy 默认使用 <br />
+8888 端口号，于是用 Nmap 诊断如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>nmap -p 8888 216.108.229.6
+
+Starting Nmap 6.40 ( http://nmap.org ) at 2013-12-06 15:18 CST
+Nmap scan report for lasvegas-nv-datacenter.com (216.108.229.6)
+Host is up (0.22s latency).
+PORT     STATE    SERVICE
+8888/tcp filtered sun-answerbook
+
+Nmap done: 1 IP address (1 host up) scanned in 3.88 seconds
+</code></pre>
+</div>
+
+<p>从 <code class="highlighter-rouge">STATE</code> 列可以看出该端口已被过滤掉，即有防火墙阻挡。知道了原因，便可用<br />
+<code class="highlighter-rouge">iptables</code> 解决：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>iptables -I INPUT -p tcp --dport 8888 -j ACCEPT
+</code></pre>
+</div>
+
+<p>再次用 Nmap 查看结果为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>PORT     STATE SERVICE
+8888/tcp open  sun-answerbook
+</code></pre>
+</div>
+
+<p>于此问题得到解决。</p>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

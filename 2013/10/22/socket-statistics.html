@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>ss: socket 统计</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2><a href="http://www.tecmint.com/11-lesser-known-useful-linux-commands/" title="External link">ss: socket 统计</a></h2>
+
+<p id="tip-info">October 22, 2013 @ 10:10 AM</p>
+<p>一般来说，使用 <code class="highlighter-rouge">netstat</code> 命令可以获得有关 socket 的信息。但其实，有一个专门的<br />
+socket 统计工具 <code class="highlighter-rouge">ss</code>。ss 即 socket statistics 的简称，用来获取 socket 的<br />
+统计信息。</p>
+
+<p>例如，在 Linux 下执行 <code class="highlighter-rouge">ss -t -l -4</code> 后输出如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>State      Recv-Q Send-Q      Local Address:Port          Peer Address:Port   
+LISTEN     0      10                      *:8888                     *:*       
+LISTEN     0      20              127.0.0.1:smtp                     *:*       
+LISTEN     0      128                     *:42301                    *:*       
+LISTEN     0      3                       *:4000                     *:*       
+LISTEN     0      3                       *:4001                     *:*       
+LISTEN     0      3                       *:6881                     *:*       
+LISTEN     0      3                       *:6882                     *:*       
+LISTEN     0      50              127.0.0.1:mysql                    *:*       
+LISTEN     0      128                     *:sunrpc                   *:*       
+LISTEN     0      3                       *:4080                     *:*       
+LISTEN     0      5                       *:10128                    *:*       
+LISTEN     0      5                       *:4242                     *:*       
+LISTEN     0      10                      *:26323                    *:*       
+LISTEN     0      128                     *:ssh                      *:*       
+</code></pre>
+</div>
+
+<p>这显示正在监听的 IPv4 TCP socket。<code class="highlighter-rouge">ss</code> 包含许多重要的选项，其主要作用为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-t 显示 TCP socket
+-u 显示 UDP socket
+-x 显示 Unix 域 socket
+-a 显示监听及非监听 socket
+-l 仅显示正在监听的 socket
+-4 仅显示 IPv4 socket
+-6 仅显示 IPv6 socket
+-m 显示 socket 内存占用
+-p 显示使用 socket 的进程
+-s 打印汇总信息
+</code></pre>
+</div>
+
+<p>当然，关于 <code class="highlighter-rouge">ss</code> 的更多用法可以通过 <code class="highlighter-rouge">ss -h</code> 或 <code class="highlighter-rouge">man ss</code> 了解。</p>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

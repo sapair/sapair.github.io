@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>Debian 下阻止包升级</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2><a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/apt-mark.8.html" title="External link">Debian 下阻止包升级</a></h2>
+
+<p id="tip-info">January 23, 2014 @ 09:56 AM</p>
+<p>在执行系统更新时，有时候我想阻止某些个别的包升级，<br />
+Debian 下可以使用 <code class="highlighter-rouge">apt-mark</code> 命令。</p>
+
+<p><strong>阻止包</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>apt-mark hold &lt;pkg&gt;
+</code></pre>
+</div>
+
+<p>比如，阻止升级 Perl，执行 <code class="highlighter-rouge">apt-mark hold perl</code> 即可。</p>
+
+<p><strong>取消阻止</strong></p>
+
+<p>如果不想阻止了，那么可以通过 <code class="highlighter-rouge">apt-mark unhold</code> 取消：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>apt-mark unhold &lt;pkg&gt;
+</code></pre>
+</div>
+
+<p><strong>显示已阻止的包</strong></p>
+
+<p>要查看已经被阻止的包，则可以执行：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>apt-mark showhold
+</code></pre>
+</div>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

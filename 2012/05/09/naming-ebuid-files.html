@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>Ebuild 文件的命名规范</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2><a href="http://www.gentoo.org/proj/en/devrel/handbook/handbook.xml?part=2&chap=1" title="External link">Ebuild 文件的命名规范</a></h2>
+
+<p id="tip-info">May  9, 2012 @ 01:10 AM</p>
+<p>最近因为要做一个名为 gem2ebuild 的小项目，于是温习了 Gentoo 相关文档，了解<br />
+Ebuild 文件的命名规范。</p>
+
+<p>一个典型的 Ebuild 文件如下所示：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>foobar-1.2.0_beta3-r4.ebuild
+</code></pre>
+</div>
+
+<p>抽象一下就是：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pkg-ver{_suf{#}}{-r#}.ebuild
+</code></pre>
+</div>
+
+<p>其中，</p>
+
+<ol>
+  <li>pkg 为包名，例子中为 foobar</li>
+  <li>ver 为版本号，例子中为 1.2.0</li>
+  <li>suf 为后缀名，是可选部分，例子中为 beta3</li>
+  <li>r 为修订号，也是可选部分，例子中为 r4</li>
+</ol>
+
+<p>除了 2、3 部分采用 _ 连接外，其余部分通过 - 连接。</p>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

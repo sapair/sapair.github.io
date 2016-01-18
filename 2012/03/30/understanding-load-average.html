@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>理解系统负载均值</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2><a href="http://blog.scoutapp.com/articles/2009/07/31/understanding-load-averages" title="External link">理解系统负载均值</a></h2>
+
+<p id="tip-info">March 30, 2012 @ 09:23 PM</p>
+<p>无论是执行 uptime 命令，还是通过 top/htop 进程查看器，在其输出信息中总是会包<br />
+含如下这行信息：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>load average: 0.08, 0.09, 0.21
+</code></pre>
+</div>
+
+<p>load average 即“负载均值”之意，该行信息表示我们的 Linux 系统在过去 1 分钟、5<br />
+分钟、以及 15 分钟的系统负载均值。</p>
+
+<p>所谓系统负载均值是指具有可运行或不间断状态的进程平均数。可运行状态的进程要<br />
+么正在使用 CPU，要么正在等待使用 CPU；而不间断状态的进程则等着 I/O 访问。</p>
+
+<p><strong>临界值。</strong>以 1 为界，1 以下说明系统 CPU 时间尚有剩余，1 说明系统 CPU<br />
+时间刚好用完，1 以上说明系统 CPU 时间已经不足。事实上，当负载均值大于 0.70<br />
+就值得引起关注了。</p>
+
+<p><strong>单多核。</strong>上述均值关注点适合使用单颗核心的情形，若有多核或多颗 CPU，则与其<br />
+数量相乘即可。例如，在具有 4 颗 CPU 的系统，即便负载均值为 1，但系统仍然有 75%<br />
+（(1 - 1/4) * 100）的 CPU 空闲时间。</p>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

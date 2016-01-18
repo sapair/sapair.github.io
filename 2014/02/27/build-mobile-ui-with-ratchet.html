@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>通过 Ratchet 为 Linuxtoy 构建移动界面</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2><a href="https://github.com/twbs/ratchet" title="External link">通过 Ratchet 为 Linuxtoy 构建移动界面</a></h2>
+
+<p id="tip-info">February 27, 2014 @ 09:07 PM</p>
+<p>今天在 HTML5 Weekly 中看到了对 Ratchet 的介绍，它是一个移动<br />
+应用构建框架，主要支持使用 HTML、CSS、JavaScript 等技术。鉴<br />
+于 Linuxtoy.org 一直缺少一个面向移动终端的界面，于是马上决定<br />
+试试 Ratchet。</p>
+
+<p>初步的实现想法是：</p>
+
+<ol>
+  <li>使用 jQuery 和 FeedEk 解析 Feed，以便获得内容</li>
+  <li>接着，使用 Ratchet 来渲染所得到的内容</li>
+</ol>
+
+<p>效果如下，可通过 <a href="http://m.linuxtoy.org">http://m.linuxtoy.org</a> 访问：</p>
+
+<p><img src="/images/mtoy-index.png" alt="mtoy" /></p>
+
+<p>首页显示最新的 10 篇文章。</p>
+
+<p><img src="/images/mtoy-single.png" alt="mtoy" /></p>
+
+<p>文章的具体内容。</p>
+
+<p>通过试用，感觉 Ratchet 还是挺好上手的。有时间不妨再深入<br />
+研究下。</p>
+
+<p>实现的源代码可从 <a href="http://git.linuxtoy.org/mtoy/">http://git.linuxtoy.org/mtoy/</a> 得到。</p>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

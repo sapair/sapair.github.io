@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>VPS 升级到 Debian 6.0</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2><a href="http://www.debian.org/releases/stable/i386/release-notes/ch-upgrading.en.html" title="External link">VPS 升级到 Debian 6.0</a></h2>
+
+<p id="tip-info">April 10, 2012 @ 10:36 PM</p>
+<p>日前，将 <a href="http://linuxtoy.org">Linuxtoy.org</a> 所在的 VPS (基于 Xen) 升级到了 Debian 6.0，这里记<br />
+一笔供以后参考：</p>
+
+<p>更改 sources.list：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># cd /etc/apt
+# cp sources.list{,.old}
+# vim sources.list
+# :%s/lenny/squeeze/g
+# :x
+</code></pre>
+</div>
+
+<p>更新源及 Debian 包密钥：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># aptitude update
+# aptitude install debian-archive-keyring
+</code></pre>
+</div>
+
+<p>升级：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># aptitude full-upgrade
+</code></pre>
+</div>
+
+<p>升级时注意保留 GRUB 旧版本，使用 GRUB 2 在安装时会有问题。</p>
+
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

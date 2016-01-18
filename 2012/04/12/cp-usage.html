@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>cp 另类用法</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2><a href="http://unix-school.blogspot.com/2012/04/cp-10-different-copy-command-examples.html" title="External link">cp 另类用法</a></h2>
+
+<p id="tip-info">April 12, 2012 @ 11:07 PM</p>
+<p>就算如司空见惯的 cp 命令，某些用法我们或许也不了解。</p>
+
+<p><strong>快速复制</strong></p>
+
+<p>说是快速复制，实则只是少打几个字而已。该复制利用 Shell 的花括号展开特性。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% cp file{1,2}
+</code></pre>
+</div>
+
+<p><strong>保留文件属性</strong></p>
+
+<p>在复制时，可以保留源文件的时间戳、模式、所有权等属性。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% cp --preserve=timestamps file file1 # 保留时间戳
+% cp --preserve=mode file file1       # 保留模式
+% cp --preserve=ownership file file1  # 保留所有权
+% cp -p file file1                    # 包括上述三者
+</code></pre>
+</div>
+
+<p><strong>创建软/硬链接</strong></p>
+
+<p>在 Linux 下，创建软/硬链接本是 ln 的专职，但 cp 却可以代劳。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% cp -l file file1 # 创建硬链接
+% cp -s file file1 # 创建软链接
+</code></pre>
+</div>
+
+<p><strong>更新文件</strong></p>
+
+<p>仅当源文件比目标文件更新时才复制。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% cp -u file1 file2
+</code></pre>
+</div>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>使用 badblocks 检测磁盘坏块</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2><a href="https://calomel.org/badblocks_wipe.html" title="External link">使用 badblocks 检测磁盘坏块</a></h2>
+
+<p id="tip-info">April 16, 2012 @ 09:53 PM</p>
+<p>badblocks 既可用来检测磁盘是否具有坏块（bad blocks），也能破坏性擦除磁盘的数<br />
+据。它来自 e2fsprogs 程序包。</p>
+
+<p><strong>检测坏块</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># badblocks -b 4096 -c 98304 -p 0 -s /dev/sda
+</code></pre>
+</div>
+
+<p>该命令对 sda 进行检测，使用块大小为 4096 字节（-b），一次检测 98304<br />
+块（-c）。其输出为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Checking for bad blocks (read-only test):  27.68% done, 18:21 elapsed. (0/0/0 errors)
+</code></pre>
+</div>
+
+<p><strong>擦除数据</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># badblocks -b 4096 -c 98304 -p 0 -w -s /dev/sda
+</code></pre>
+</div>
+
+<p>追加 -w 选项可以将 sda 上的数据擦除掉。</p>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

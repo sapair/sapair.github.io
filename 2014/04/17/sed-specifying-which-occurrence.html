@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>sed 中通过 /n 指定匹配出现次数</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2><a href="http://www.grymoire.com/Unix/Sed.html#uh-8" title="External link">sed 中通过 /n 指定匹配出现次数</a></h2>
+
+<p id="tip-info">April 17, 2014 @ 02:36 PM</p>
+<p>在 sed 中，通过 <code class="highlighter-rouge">/n</code> (n 代表数字) 可以指定匹配出现的次数。</p>
+
+<p>例 1：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sed 's/[a-zA-Z]* //2' &lt;old &gt;new
+</code></pre>
+</div>
+
+<p>这里的 <code class="highlighter-rouge">/2</code> 将匹配到的第二个单词删除。</p>
+
+<p>例 2：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sed 's/./&amp;:/80' &lt;file &gt;new
+</code></pre>
+</div>
+
+<p>这里的 <code class="highlighter-rouge">/80</code> 在第 80 个字符后面添加一个 <code class="highlighter-rouge">:</code>。</p>
+
+<p>例 3：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sed 's/[a-zA-Z]* /DELETED /2g' &lt;old &gt;new
+</code></pre>
+</div>
+
+<p>与 <code class="highlighter-rouge">/g</code> 连用，将匹配到的第二个、第三个……替换成 DELETED。</p>
+
+<p><code class="highlighter-rouge">/n</code> 中的 n 可以取 1 ~ 512 中的数。</p>
+
+<p>注意，<code class="highlighter-rouge">/n</code> 与 <code class="highlighter-rouge">\n</code> 的区别，后者指引用捕获匹配的内容，n 取 1 ~ 9。</p>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

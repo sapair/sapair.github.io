@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>利用 Synergy 共享鼠标和键盘</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2><a href="http://synergy-foss.org/" title="External link">利用 Synergy 共享鼠标和键盘</a></h2>
+
+<p id="tip-info">March 19, 2014 @ 02:46 PM</p>
+<p>在办公室工作的时候，如果想要将台式机的鼠标和键盘共享<br />
+给笔记本使用，通过 Synergy 是很方便的。</p>
+
+<p>要达到上述目的，首先在台式机和笔记本上都安装 Synergy，<br />
+注意保证两边的版本一致，以免出现兼容问题。</p>
+
+<p><strong>台式机：服务端</strong></p>
+
+<p>因为我们是打算共享台式机的鼠标和键盘，所以这里将台式<br />
+机作为 Synergy 的服务端。同时，在 <code class="highlighter-rouge">/etc/synergy.conf</code><br />
+中添加下列内容：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>section: screens
+    codefun: 
+    codetoy: 
+end
+
+section: links
+    codefun:
+        left  = codetoy
+    codetoy:
+        right = codefun
+end
+</code></pre>
+</div>
+
+<p>其中，<code class="highlighter-rouge">codetoy</code> 和 <code class="highlighter-rouge">codefun</code> 分别为台式机和笔记本的主机<br />
+名。<code class="highlighter-rouge">screens</code> 节定义要使用共享鼠标和键盘的两台机器，也<br />
+可以同时定义多台。<code class="highlighter-rouge">links</code> 节则定义两台机器的屏幕所处的<br />
+位置，这里我们将台式机设置在左边，相应地笔记本则在台式机<br />
+的右边。除了左右关系，也能定义上下关系。</p>
+
+<p>配置好后，通过以下命令启动 Synergy 的服务端：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>synergys -f -n codetoy
+</code></pre>
+</div>
+
+<p><strong>笔记本：客户端</strong></p>
+
+<p>客户端无需配置，直接使用如下命令连接服务端即可：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>synergyc -f -n codetoy 192.168.1.58
+</code></pre>
+</div>
+
+<p>其中，<code class="highlighter-rouge">192.168.1.58</code> 为 Synergy 服务端所在机器的 IP。</p>
+
+<p>现在，当将鼠标指针从台式机的屏幕右边移出时，你会发现它<br />
+已经进到笔记本的屏幕了。如果要返回台式机屏幕，则从笔记<br />
+本屏幕的左边移出即可。</p>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

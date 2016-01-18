@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>使用 Pure-FTPd 架设 FTP 服务</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2><a href="http://www.pureftpd.org/project/pure-ftpd" title="External link">使用 Pure-FTPd 架设 FTP 服务</a></h2>
+
+<p id="tip-info">May  9, 2014 @ 11:34 AM</p>
+<p>最近需要与同事交换一些数据文件，于是考虑架设一个 FTP <br />
+服务。这里，我使用 Pure-FTPd 来加以实现。</p>
+
+<p><strong>安装</strong></p>
+
+<p>在 Debian 中，执行：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>apt-get install pure-ftpd
+</code></pre>
+</div>
+
+<p><strong>允许匿名用户访问</strong></p>
+
+<p>编辑 <code class="highlighter-rouge">/etc/pure-ftpd/conf/NoAnonymous</code> 将其中的 yes <br />
+改为 no。</p>
+
+<p>添加一个名为 ftp 的用户：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>adduser ftp
+</code></pre>
+</div>
+
+<p>再重启服务：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>service pure-ftpd restart
+</code></pre>
+</div>
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/04/17/sed-specifying-which-occurrence.html">sed 中通过 /n 指定匹配出现次数</a> &raquo; April 17, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>

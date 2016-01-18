@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <title>使用 Perl 实现 tldr</title>
+        
+        <link rel="alternate" type="application/rss+xml" title="Xiaodong Xu" href="http://toy.linuxtoy.org/atom.xml">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- syntax highlighting css -->
+        <link rel="stylesheet" type="text/css" href="css/syntax.css">
+        <!-- homepage css -->
+        <link rel="stylesheet" type="text/css" href="css/hgtip/aal.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/calluna.css">
+        <link rel="stylesheet" type="text/css" href="css/hgtip/style.css">
+    </head>
+    <body>
+        <div id="main-wrap">
+            <div id="header">
+                <h1><a href="" title="Xiaodong Xu">Xiaodong Xu</a></h1>
+            </div>
+            <p id="navigation">
+                <a href="pages/archives.html">archives</a> &mdash;
+                <a href="pages/projects.html">projects</a> &mdash;
+                <a href="pages/viml.html">viml</a> &mdash;
+                <a href="pages/people.html">people</a> &mdash;
+                <a href="pages/favorite.html">favorite</a> &mdash;
+                <a href="pages/about.html">about</a>
+            </p>
+            <div id="content">
+                
+<h2><a href="https://linuxtoy.org/archives/tldr.html" title="External link">使用 Perl 实现 tldr</a></h2>
+
+<p id="tip-info">February 21, 2014 @ 12:48 PM</p>
+<p>Romain Prieto 的 <a href="https://github.com/rprieto/tldr">tldr</a> 想法是好，但其依赖的一堆 Node<br />
+可能会让某些朋友不高兴。当是练手，我用 Perl 实现了自己的<br />
+<a href="https://github.com/xuxiaodong/bin/blob/master/tldr">tldr</a>。</p>
+
+<p>使用方法如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>% mkdir ~/tldr
+% cd !$
+% git clone https://github.com/rprieto/tldr.git
+% wget https://github.com/xuxiaodong/bin/raw/master/tldr -O tldr.pl
+% chmod +x tldr.pl
+% ./tldr.pl tar
+</code></pre>
+</div>
+
+<p>输出为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; Archiving utility
+&gt; Optional compression with gzip / bzip
+
+- create an archive from files
+
+`tar cf \{\{target.tar}} \{\{file1 file2 file3}}`
+
+- create a gzipped archive
+
+`tar cfz \{\{target.tar.gz}} \{\{file1 file2 file3}}`
+
+- extract an archive in a target folder
+
+`tar xf \{\{source.tar}} -C \{\{folder}}`
+
+- extract a gzipped archive in the current directory
+
+`tar xzf \{\{source.tar.gz}}`
+</code></pre>
+</div>
+
+
+<div id="tip-comments">
+    <h2>Related Posts</h2>
+    <ul>
+        
+        <li><a href="/2014/06/16/python-epub-doc.html">将 Python 文档打包成 ePub 格式</a> &raquo; June 16, 2014</li>
+        
+        <li><a href="/2014/06/13/switching-to-systemd-on-debian-jessie.html">Debian Jessie 切换 systemd</a> &raquo; June 13, 2014</li>
+        
+        <li><a href="/2014/05/09/pure-ftpd.html">使用 Pure-FTPd 架设 FTP 服务</a> &raquo; May  9, 2014</li>
+        
+    </ul>
+</div>
+
+            </div>
+            <div id="footer">
+                follow me: <a href="https://twitter.com/xuxiaodong">twitter</a> / <a href="https://plus.google.com/101096637428284023293/" rel="author">google+</a> / <a href="https://github.com/xuxiaodong">github</a> / <a href="http://www.linkedin.com/pub/xiaodong-xu/62/319/7">linkedin</a> / <a href="http://toy.linuxtoy.org/atom.xml">rss</a>
+            </div>
+        </div>
+    </body>
+</html>
